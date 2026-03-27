@@ -1,0 +1,275 @@
+/* ========================================= */
+/* 1. VARIÁVEIS DE COR E CONFIGURAÇÕES GERAIS */
+/* ========================================= */
+:root {
+    /* Modo Claro (Padrão) */
+    --bg-color: #ffffff;
+    --bg-accent: #f9f9f9; /* bg-light */
+    --text-color: #333333;
+    --header-bg: #ffffff;
+    --bg-collor: #000000;
+    --card-bg: #ffffff;
+    --accent-color: #007bff; /* Azul padrão */
+    --icon-color: #333333; /* Cor inicial dos ícones */
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.logo img {
+  width: 40px;
+  height: auto;
+}
+
+body {
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================= */
+/* 2. HEADER E NAVEGAÇÃO                  */
+/* ========================================= */
+header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--accent-color);
+}
+
+.menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text-color); }
+
+/* ========================================= */
+/* 3. HERO SECTION E ANIMAÇÃO             */
+/* ========================================= */
+.hero {
+    height: 100vh;
+    /* Gradiente original */
+    background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+    position: relative; /* Necessário para a animação */
+    overflow: hidden;
+}
+
+/* Animação de fundo (Matrix/Código) */
+.code-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    animation: matrix-fade 10s infinite linear;
+}
+
+@keyframes matrix-fade {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+.hero-content {
+    z-index: 1; /* Garante que o texto fique acima da animação */
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 15px; }
+
+.btn {
+    display: inline-block;
+    background: #fff;
+    color: #007bff;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ========================================= */
+/* 4. SEÇÕES GERAIS E SOBRE MIM           */
+/* ========================================= */
+.section {
+    padding: 100px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section h2 { margin-bottom: 40px; font-size: 2.5rem; color: var(--accent-color); }
+
+.bg-light { background-color: var(--bg-accent); }
+
+.sobre-container { text-align: left; }
+
+.sobre-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.sobre-foto { flex: 1; display: flex; justify-content: center; }
+
+.sobre-foto img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border: 5px solid white;
+}
+
+.sobre-texto { flex: 1; }
+
+.sobre-texto p { margin-bottom: 15px; color: var(--text-color); font-weight: 300; opacity: 0.9; }
+
+/* ========================================= */
+/* 5. PROJETOS E CURRÍCULO                */
+/* ========================================= */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.5s, background-color 0.5s ease;
+}
+
+.project-card:hover { transform: translateY(-10px); }
+
+.project-img { 
+    height: 350px; 
+    object-fit: cover;
+    width: 100%;
+}
+
+.project-info { 
+    padding: 20px; 
+    text-align: left; 
+}
+
+.project-info h3 { color: var(--text-color); margin-bottom: 10px; }
+.project-info p { color: var(--text-color); opacity: 0.8; font-size: 0.9rem; margin-bottom: 15px; }
+.project-info a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+
+.btn-cv {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+.btn-cv:hover { opacity: 0.8; }
+
+/* ========================================= */
+/* 6. FOOTER E ÍCONES COLORIDOS           */
+/* ========================================= */
+footer {
+    padding: 50px 5%;
+    text-align: center;
+    background-color: var(--bg-accent);
+    transition: background-color 0.3s ease;
+}
+
+.contact h2 { color: var(--accent-color); }
+
+.social-icons {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-icons a {
+    font-size: 2.5rem;
+    color: var(--icon-color); /* Cor base */
+    transition: 0.3s, color 0.3s ease;
+}
+
+/* Cores específicas no HOVER */
+.social-icons a.icon-linkedin:hover { color: #0077b5; } /* Azul LinkedIn */
+.social-icons a.icon-instagram:hover { color: #e4405f; } /* Rosa Instagram */
+.social-icons a.icon-email:hover { color: #ea4335; }     /* Vermelho Gmail */
+
+footer p { color: var(--text-color); font-size: 0.9rem; opacity: 0.7; margin-top: 20px; }
+
+/* Bandeira do Brasil */
+.flag-br {
+    display: inline-block;
+    width: 20px;
+    height: 14px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg');
+    background-size: cover;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
